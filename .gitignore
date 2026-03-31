@@ -1,0 +1,83 @@
+# ======================
+# CREDENCIALES Y CONFIGS
+# ======================
+.env
+*.env
+config.properties
+database.properties
+db.properties
+application-local.properties
+application-dev.properties
+secrets.properties
+
+# ======================
+# INTELLIJ IDEA
+# ======================
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ======================
+# MAVEN
+# ======================
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ======================
+# GRADLE
+# ======================
+build/
+.gradle/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# ======================
+# COMPILADOS Y BINARIOS
+# ======================
+*.class
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# ======================
+# LOGS
+# ======================
+*.log
+logs/
+log/
+
+# ======================
+# SISTEMA OPERATIVO
+# ======================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+pagefile.sys
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ======================
+# OTROS
+# ======================
+*.tmp
+*.bak
+*.swp
+*.orig
