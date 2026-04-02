@@ -20,4 +20,41 @@ CREATE TABLE cliente (
                          CONSTRAINT uk_cliente_dni UNIQUE KEY(DNI)
 );
 
+-- Creacion de la tabla Desarrollador
+CREATE TABLE desarrollador (
+                               id INT AUTO_INCREMENT,
+                               DNI VARCHAR(11),
+                               nombre VARCHAR(50) NOT NULL,
+                               apellido1 VARCHAR(75) NOT NULL,
+                               apellido2 VARCHAR(75),
+                               email VARCHAR(100) NOT NULL,
+                               fecha_alta DATE NOT NULL,
+                               CONSTRAINT pk_desarrollador PRIMARY KEY(id),
+                               CONSTRAINT uk_desarrollador_dni UNIQUE KEY(DNI)
+);
 
+-- Creacion de la tabla Proyecto
+CREATE TABLE proyecto (
+                          id INT AUTO_INCREMENT,
+                          nombre VARCHAR(50) NOT NULL,
+                          descripcion VARCHAR(500),
+                          fecha_inicio DATE NOT NULL,
+                          fecha_fin DATE,
+                          horas_previstas INT,
+                          CONSTRAINT pk_proyecto PRIMARY KEY(id)
+);
+
+-- Creacion de la tabla Asignacion
+CREATE TABLE asignacion (
+                            id INT AUTO_INCREMENT,
+                            id_cliente INT NOT NULL,
+                            id_desarrollador INT NOT NULL,
+                            id_proyecto INT NOT NULL,
+                            fecha_inicio DATE NOT NULL,
+                            fecha_fin DATE,
+                            horas_trabajadas INT,
+                            CONSTRAINT pk_asignacion PRIMARY KEY(id),
+                            CONSTRAINT fk_asignacion_cliente FOREIGN KEY(id_cliente) REFERENCES cliente(id),
+                            CONSTRAINT fk_asignacion_desarrollador FOREIGN KEY(id_desarrollador) REFERENCES desarrollador(id),
+                            CONSTRAINT fk_asignacion_proyecto FOREIGN KEY(id_proyecto) REFERENCES proyecto(id)
+);
