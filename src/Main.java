@@ -53,6 +53,7 @@ public class Main {
                                 opcionModificar();
                                 break;
                             case 4:
+                                opcionEliminar();
                                 break;
                             case 0:
                                 System.out.println("Saliendo...");
@@ -135,5 +136,15 @@ public class Main {
 
         // Metodo para modificar los datos
         DesarrolladorDAO.actualizarDesarrollador(dev);
+    }
+
+    // Metodo para eliminar un desarrollador por id
+    public static void opcionEliminar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce el ID del desarrollador a eliminar: ");
+        int id = sc.nextInt();
+
+        // Metodo para la consulta
+        DesarrolladorDAO.eliminarDesarrollador(id);
     }
 }
