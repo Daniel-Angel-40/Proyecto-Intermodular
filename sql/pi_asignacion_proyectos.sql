@@ -84,3 +84,15 @@ INSERT INTO desarrollador (DNI, nombre, apellido1, apellido2, email, fecha_alta)
 VALUES (dni, nombre, apellido1, apellido2, email, fecha_alta);
 END //
 DELIMITER ;
+
+-- Creacion del procedimiento para consultar datos de la tabla desarrollador
+DELIMITER //
+CREATE PROCEDURE sp_get_desarrollador(
+    -- Id que ha dado el usuario
+    IN v_id INT
+)
+BEGIN
+	-- Sentencia con el id dado
+SELECT * FROM desarrollador WHERE id = v_id;
+END //
+DELIMITER ;
