@@ -102,4 +102,28 @@ public class DesarrolladorDAO {
             System.out.println(e.getMessage());
         }
     }
+
+    public static void eliminarDesarrollador(int id){
+
+        // Creacion de la sentencia SQL
+        String sentencia = "{CALL sp_delete_desarrollador(?)}";
+
+        try {
+            // Conexion a la base de datos
+            Connection con = ConexionBD.getConnection();
+            // Preparacion de la sentencia
+            CallableStatement cs = con.prepareCall(sentencia);
+
+            // Se añade el id proporcionado a la sentencia
+            cs.setInt(1, id);
+
+            // Ejecuto la sentencia
+            cs.executeUpdate();
+
+            System.out.println("Desarrollador eliminado correctamente");
+
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }
