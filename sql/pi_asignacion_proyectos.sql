@@ -114,3 +114,15 @@ BEGIN
 UPDATE desarrollador SET DNI = v_dni, nombre = v_nombre, apellido1 = v_apellido1, apellido2 = v_apellido2, email = v_email, fecha_alta = v_fecha_alta WHERE id = v_id;
 END //
 DELIMITER ;
+
+-- Creacion del procedimiento para eliminar datos de la tabla desarrollador
+DELIMITER //
+CREATE PROCEDURE sp_delete_desarrollador(
+    -- Id para poder eliminar un desarrollador
+    IN v_id INT
+)
+BEGIN
+	-- Sentencia para eliminar un desarrollador
+DELETE FROM desarrollador WHERE id = v_id;
+END //
+DELIMITER ;
