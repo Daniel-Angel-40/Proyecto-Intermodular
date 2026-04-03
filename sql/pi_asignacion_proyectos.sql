@@ -96,3 +96,21 @@ BEGIN
 SELECT * FROM desarrollador WHERE id = v_id;
 END //
 DELIMITER ;
+
+-- Creacion del procedimiento para modificar los datos de la tabla desarrollador
+DELIMITER //
+CREATE PROCEDURE sp_update_desarrollador(
+    -- El id para identificarlo y los demas datos para modificarlos
+    IN v_id INT,
+    IN v_dni VARCHAR(11),
+    IN v_nombre VARCHAR(50),
+    IN v_apellido1 VARCHAR(75),
+    IN v_apellido2 VARCHAR(75),
+    IN v_email VARCHAR(100),
+    IN v_fecha_alta DATE
+)
+BEGIN
+	-- Sentencia para actualizar
+UPDATE desarrollador SET DNI = v_dni, nombre = v_nombre, apellido1 = v_apellido1, apellido2 = v_apellido2, email = v_email, fecha_alta = v_fecha_alta WHERE id = v_id;
+END //
+DELIMITER ;
