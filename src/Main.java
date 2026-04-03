@@ -47,6 +47,7 @@ public class Main {
                                 opcionCrear();
                                 break;
                             case 2:
+                                opcionConsultar();
                                 break;
                             case 3:
                                 break;
@@ -72,7 +73,7 @@ public class Main {
     }
 
     // Metodo para añadir un desarrollador en la base de datos
-    public static void opcionCrear(){
+    public static void opcionCrear() {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Introduce los datos del desarrollador: ");
@@ -94,5 +95,15 @@ public class Main {
 
         // Metodo para añadir un desarrollador en la base de datos con la informacion pedida
         DesarrolladorDAO.insertarDesarrollador(dev);
+    }
+
+    // Metodo para consultar un desarrollador por id
+    public static void opcionConsultar() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Introduce el ID del desarrollador a consultar: ");
+        int id = sc.nextInt();
+
+        // Metodo para la consulta
+        DesarrolladorDAO.consultarDesarrollador(id);
     }
 }
