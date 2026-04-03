@@ -58,3 +58,10 @@ CREATE TABLE asignacion (
                             CONSTRAINT fk_asignacion_desarrollador FOREIGN KEY(id_desarrollador) REFERENCES desarrollador(id),
                             CONSTRAINT fk_asignacion_proyecto FOREIGN KEY(id_proyecto) REFERENCES proyecto(id)
 );
+
+
+-- Creacion de usuario
+DROP USER mantenimiento@'%';
+CREATE USER mantenimiento@'%' IDENTIFIED BY 'admin';
+-- Permisos al usuario
+GRANT INSERT, DELETE, SELECT, UPDATE, EXECUTE ON pi_asignacion_proyectos.* TO mantenimiento@'%';
