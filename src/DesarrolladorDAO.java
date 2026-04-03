@@ -1,3 +1,4 @@
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,25 +10,24 @@ public class DesarrolladorDAO {
     public static void insertarDesarrollador(Desarrollador dev){
 
         // Creacion de la sentencia SQL
-        String sentencia = "INSERT INTO desarrollador (DNI, nombre, apellido1, apellido2, email, fecha_alta)" +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sentencia = "{CALL sp_insertar_desarrollador(?, ?, ?, ?, ?, ?)}";
 
         try {
             // Conexion a la base de datos
             Connection con = ConexionBD.getConnection();
             // Preparacion de la sentencia
-            PreparedStatement pst = con.prepareStatement(sentencia);
+            CallableStatement cs = con.prepareCall(sentencia);
 
             // Se añaden los valores menos el ID ya que es autoincremental
-            pst.setString(1, dev.getDNI());
-            pst.setString(2, dev.getNombre());
-            pst.setString(3, dev.getApellido1());
-            pst.setString(4, dev.getApellido2());
-            pst.setString(5, dev.getEmail());
-            pst.setString(6, dev.getFecha_alta());
+            cs.setString(1, dev.getDNI());
+            cs.setString(2, dev.getNombre());
+            cs.setString(3, dev.getApellido1());
+            cs.setString(4, dev.getApellido2());
+            cs.setString(5, dev.getEmail());
+            cs.setString(6, dev.getFecha_alta());
 
             // Introduzco la variable para comprobar que ha salido bien la sentencia
-            int resultado = pst.executeUpdate();
+            int resultado = cs.executeUpdate();
 
             // Compruebo el resultado
             if (resultado > 0) {
