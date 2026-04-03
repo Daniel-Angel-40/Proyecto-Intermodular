@@ -72,7 +72,13 @@ public class Desarrollador {
 
     // CONSTRUCTORES
 
-    public Desarrollador() {
+    public Desarrollador(String DNI, String nombre, String apellido1, String apellido2, String email, String fecha_alta) {
+        this.DNI = DNI;
+        this.nombre = nombre;
+        this.apellido1 = apellido1;
+        this.apellido2 = apellido2;
+        this.email = email;
+        this.fecha_alta = fecha_alta;
     }
 
     // METODOS
