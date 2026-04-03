@@ -65,3 +65,22 @@ DROP USER mantenimiento@'%';
 CREATE USER mantenimiento@'%' IDENTIFIED BY 'admin';
 -- Permisos al usuario
 GRANT INSERT, DELETE, SELECT, UPDATE, EXECUTE ON pi_asignacion_proyectos.* TO mantenimiento@'%';
+
+
+-- Creacion del procedimiento para insertar datos a la tabla desarrollador
+DELIMITER //
+CREATE PROCEDURE sp_insertar_desarrollador(
+    -- Datos de entrada
+    IN dni VARCHAR(11),
+    IN nombre VARCHAR(50),
+    IN apellido1 VARCHAR(75),
+    IN apellido2 VARCHAR(75),
+    IN email VARCHAR(100),
+    IN fecha_alta DATE
+)
+BEGIN
+	-- Sentecia con los datos para introducir en la tabla
+INSERT INTO desarrollador (DNI, nombre, apellido1, apellido2, email, fecha_alta)
+VALUES (dni, nombre, apellido1, apellido2, email, fecha_alta);
+END //
+DELIMITER ;
