@@ -1,13 +1,10 @@
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 // Creo esta clase para dividir la clase desarrollador a la gestion de la base de datos
 
 public class DesarrolladorDAO {
 
-    public static void insertarDesarrollador(Desarrollador dev){
+    public static void insertarDesarrollador(Desarrollador dev) {
 
         // Creacion de la sentencia SQL
         String sentencia = "{CALL sp_insertar_desarrollador(?, ?, ?, ?, ?, ?)}";
@@ -34,6 +31,40 @@ public class DesarrolladorDAO {
                 System.out.println("Desarrollador insertado correctamente");
             } else {
                 System.out.println("Error");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void consultarDesarrollador(int id) {
+
+        // Creacion de la sentecia SQL
+        String sentencia = "{CALL sp_get_desarrollador(?)}";
+
+        try {
+            // Conexion con la base de datos
+            Connection con = ConexionBD.getConnection();
+            // Preparacion de la sentencia
+            CallableStatement cs = con.prepareCall(sentencia);
+
+            // Se añade el id proporcionado a la sentencia
+            cs.setInt(1, id);
+            // Se ejecuta la sentencia
+            ResultSet rs = cs.executeQuery();
+
+            // Asigno los atributos al objeto desarrollador
+            if (rs.next()) {
+                Desarrollador dev = new Desarrollador(rs.getString("DNI"), rs.getString("nombre"),
+                        rs.getString("apellido1"), rs.getString("apellido2"),
+                        rs.getString("email"), rs.getString("fecha_alta"));
+                dev.setId(id);
+
+                // Muestro el objeto con los atributos
+                System.out.println(dev);
+            } else {
+                System.out.println("No existe un desarrollador con ese id asignado");
             }
 
         } catch (SQLException e) {
