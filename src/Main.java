@@ -44,6 +44,7 @@ public class Main {
 
                         switch (opcionDesarrollador) {
                             case 1:
+                                opcionCrear();
                                 break;
                             case 2:
                                 break;
@@ -68,5 +69,30 @@ public class Main {
             }
         } while (opcionPrincipal != 0);
 
+    }
+
+    // Metodo para añadir un desarrollador en la base de datos
+    public static void opcionCrear(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Introduce los datos del desarrollador: ");
+        System.out.print("DNI: ");
+        String dni = sc.nextLine();
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        System.out.print("Primer Apellido: ");
+        String apellido1 = sc.nextLine();
+        System.out.print("Segundo Apellido: ");
+        String apellido2 = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        System.out.print("Fecha Alta(Año-Mes-Dia): ");
+        String fecha_alta = sc.nextLine();
+
+        // Creamos el objeto para introducirlo en el metodo
+        Desarrollador dev = new Desarrollador(dni, nombre, apellido1, apellido2, email, fecha_alta);
+
+        // Metodo para añadir un desarrollador en la base de datos con la informacion pedida
+        DesarrolladorDAO.insertarDesarrollador(dev);
     }
 }
