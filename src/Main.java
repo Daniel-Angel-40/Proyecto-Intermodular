@@ -50,6 +50,7 @@ public class Main {
                                 opcionConsultar();
                                 break;
                             case 3:
+                                opcionModificar();
                                 break;
                             case 4:
                                 break;
@@ -105,5 +106,34 @@ public class Main {
 
         // Metodo para la consulta
         DesarrolladorDAO.consultarDesarrollador(id);
+    }
+
+    // Metodo para modificar un desarrollador
+    public static void opcionModificar(){
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Introduce el id para modificar: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Introduce todos los datos para modificar: ");
+        System.out.print("DNI: ");
+        String dni = sc.nextLine();
+        System.out.print("Nombre: ");
+        String nombre = sc.nextLine();
+        System.out.print("Primer Apellido: ");
+        String apellido1 = sc.nextLine();
+        System.out.print("Segundo Apellido: ");
+        String apellido2 = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+        System.out.print("Fecha Alta(Año-Mes-Dia): ");
+        String fecha_alta = sc.nextLine();
+
+        // Creamos el objeto para introducirlo en el metodo
+        Desarrollador dev = new Desarrollador(dni, nombre, apellido1, apellido2, email, fecha_alta);
+        dev.setId(id);
+
+        // Metodo para modificar los datos
+        DesarrolladorDAO.actualizarDesarrollador(dev);
     }
 }
