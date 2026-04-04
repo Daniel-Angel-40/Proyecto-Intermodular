@@ -9,9 +9,10 @@ public class DesarrolladorDAO {
         // Creacion de la sentencia SQL
         String sentencia = "{CALL sp_insertar_desarrollador(?, ?, ?, ?, ?, ?)}";
 
-        try {
-            // Conexion a la base de datos
-            Connection con = ConexionBD.getConnection();
+        // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
+        // Conexion a la base de datos
+        try(Connection con = ConexionBD.getConnection()) {
+
             // Preparacion de la sentencia
             CallableStatement cs = con.prepareCall(sentencia);
 
@@ -43,9 +44,10 @@ public class DesarrolladorDAO {
         // Creacion de la sentecia SQL
         String sentencia = "{CALL sp_get_desarrollador(?)}";
 
-        try {
-            // Conexion con la base de datos
-            Connection con = ConexionBD.getConnection();
+        // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
+        // Conexion a la base de datos
+        try(Connection con = ConexionBD.getConnection()) {
+
             // Preparacion de la sentencia
             CallableStatement cs = con.prepareCall(sentencia);
 
@@ -77,9 +79,9 @@ public class DesarrolladorDAO {
         // Creacion de la sentencia SQL
         String sentencia = "{CALL sp_update_desarrollador(?, ?, ?, ?, ?, ?, ?)}";
 
-        try {
-            // Conexion a la base de datos
-            Connection con = ConexionBD.getConnection();
+        // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
+        // Conexion a la base de datos
+        try(Connection con = ConexionBD.getConnection()) {
 
             // Preparacion de la sentencia
             CallableStatement cs = con.prepareCall(sentencia);
@@ -108,9 +110,10 @@ public class DesarrolladorDAO {
         // Creacion de la sentencia SQL
         String sentencia = "{CALL sp_delete_desarrollador(?)}";
 
-        try {
-            // Conexion a la base de datos
-            Connection con = ConexionBD.getConnection();
+        // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
+        // Conexion a la base de datos
+        try(Connection con = ConexionBD.getConnection()) {
+
             // Preparacion de la sentencia
             CallableStatement cs = con.prepareCall(sentencia);
 
