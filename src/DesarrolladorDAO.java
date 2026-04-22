@@ -14,18 +14,18 @@ public class DesarrolladorDAO {
         try(Connection con = ConexionBD.getConnection()) {
 
             // Preparacion de la sentencia
-            CallableStatement cs = con.prepareCall(sentencia);
+            PreparedStatement ps = con.prepareStatement(sentencia);
 
             // Se añaden los valores menos el ID ya que es autoincremental
-            cs.setString(1, dev.getDNI());
-            cs.setString(2, dev.getNombre());
-            cs.setString(3, dev.getApellido1());
-            cs.setString(4, dev.getApellido2());
-            cs.setString(5, dev.getEmail());
-            cs.setString(6, dev.getFecha_alta());
+            ps.setString(1, dev.getDNI());
+            ps.setString(2, dev.getNombre());
+            ps.setString(3, dev.getApellido1());
+            ps.setString(4, dev.getApellido2());
+            ps.setString(5, dev.getEmail());
+            ps.setString(6, dev.getFecha_alta());
 
             // Introduzco la variable para comprobar que ha salido bien la sentencia
-            int resultado = cs.executeUpdate();
+            int resultado = ps.executeUpdate();
 
             // Compruebo el resultado
             if (resultado > 0) {
@@ -49,12 +49,12 @@ public class DesarrolladorDAO {
         try(Connection con = ConexionBD.getConnection()) {
 
             // Preparacion de la sentencia
-            CallableStatement cs = con.prepareCall(sentencia);
+            PreparedStatement ps = con.prepareStatement(sentencia);
 
             // Se añade el id proporcionado a la sentencia
-            cs.setInt(1, id);
+            ps.setInt(1, id);
             // Se ejecuta la sentencia
-            ResultSet rs = cs.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
             // Asigno los atributos al objeto desarrollador
             if (rs.next()) {
@@ -84,19 +84,19 @@ public class DesarrolladorDAO {
         try(Connection con = ConexionBD.getConnection()) {
 
             // Preparacion de la sentencia
-            CallableStatement cs = con.prepareCall(sentencia);
+            PreparedStatement ps = con.prepareStatement(sentencia);
 
             // Se introducen todos los datos del usuario
-            cs.setInt(1, dev.getId());
-            cs.setString(2, dev.getDNI());
-            cs.setString(3, dev.getNombre());
-            cs.setString(4, dev.getApellido1());
-            cs.setString(5, dev.getApellido2());
-            cs.setString(6, dev.getEmail());
-            cs.setString(7, dev.getFecha_alta());
+            ps.setInt(1, dev.getId());
+            ps.setString(2, dev.getDNI());
+            ps.setString(3, dev.getNombre());
+            ps.setString(4, dev.getApellido1());
+            ps.setString(5, dev.getApellido2());
+            ps.setString(6, dev.getEmail());
+            ps.setString(7, dev.getFecha_alta());
 
             // Ejecuto la sentencia
-            cs.executeUpdate();
+            ps.executeUpdate();
 
             System.out.println("Modificacion completada correctamente");
 
@@ -115,13 +115,13 @@ public class DesarrolladorDAO {
         try(Connection con = ConexionBD.getConnection()) {
 
             // Preparacion de la sentencia
-            CallableStatement cs = con.prepareCall(sentencia);
+            PreparedStatement ps = con.prepareStatement(sentencia);
 
             // Se añade el id proporcionado a la sentencia
-            cs.setInt(1, id);
+            ps.setInt(1, id);
 
             // Ejecuto la sentencia
-            cs.executeUpdate();
+            ps.executeUpdate();
 
             System.out.println("Desarrollador eliminado correctamente");
 
