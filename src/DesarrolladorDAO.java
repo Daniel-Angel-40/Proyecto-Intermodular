@@ -24,7 +24,7 @@ public class DesarrolladorDAO {
             ps.setString(5, dev.getEmail());
             ps.setString(6, dev.getFecha_alta());
 
-            // Introduzco la variable para comprobar que ha salido bien la sentencia
+            // IEjecuto la sentencia con la variable para comprobar que ha salido bien
             int resultado = ps.executeUpdate();
 
             // Compruebo el resultado
@@ -95,10 +95,15 @@ public class DesarrolladorDAO {
             ps.setString(6, dev.getEmail());
             ps.setString(7, dev.getFecha_alta());
 
-            // Ejecuto la sentencia
-            ps.executeUpdate();
+            // Ejecuto la sentencia con la variable para comprobar que ha salido bien
+            int resultado = ps.executeUpdate();
 
-            System.out.println("Modificacion completada correctamente");
+            // Compruebo el resultado
+            if (resultado > 0) {
+                System.out.println("Modificacion completada correctamente");
+            } else {
+                System.out.println("Error");
+            }
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -120,10 +125,15 @@ public class DesarrolladorDAO {
             // Se añade el id proporcionado a la sentencia
             ps.setInt(1, id);
 
-            // Ejecuto la sentencia
-            ps.executeUpdate();
+            // Ejecuto la sentencia con la variable para comprobar que ha salido bien
+            int resultado = ps.executeUpdate();
 
-            System.out.println("Desarrollador eliminado correctamente");
+            // Compruebo el resultado
+            if (resultado > 0) {
+                System.out.println("Desarrollador eliminado correctamente");
+            } else {
+                System.out.println("Error");
+            }
 
         } catch (SQLException e){
             System.out.println(e.getMessage());
