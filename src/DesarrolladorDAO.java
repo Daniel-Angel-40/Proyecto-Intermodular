@@ -7,7 +7,7 @@ public class DesarrolladorDAO {
     public static void insertarDesarrollador(Desarrollador dev) {
 
         // Creacion de la sentencia SQL
-        String sentencia = "{CALL sp_insertar_desarrollador(?, ?, ?, ?, ?, ?)}";
+        String sentencia = "{CALL sp_ins_desarrollador(?, ?, ?, ?, ?, ?)}";
 
         // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
         // Conexion a la base de datos
@@ -77,7 +77,7 @@ public class DesarrolladorDAO {
     public static void actualizarDesarrollador(Desarrollador dev){
 
         // Creacion de la sentencia SQL
-        String sentencia = "{CALL sp_update_desarrollador(?, ?, ?, ?, ?, ?, ?)}";
+        String sentencia = "{CALL sp_upd_desarrollador(?, ?, ?, ?, ?, ?, ?)}";
 
         // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
         // Conexion a la base de datos
@@ -113,7 +113,7 @@ public class DesarrolladorDAO {
     public static void eliminarDesarrollador(int id){
 
         // Creacion de la sentencia SQL
-        String sentencia = "{CALL sp_delete_desarrollador(?)}";
+        String sentencia = "{CALL sp_del_desarrollador(?)}";
 
         // Pongo aqui la conexion para que se desconecte automaticamente cuando acabe el try
         // Conexion a la base de datos

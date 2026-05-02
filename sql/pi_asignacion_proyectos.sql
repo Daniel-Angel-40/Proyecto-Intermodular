@@ -69,7 +69,7 @@ GRANT INSERT, DELETE, SELECT, UPDATE, EXECUTE ON pi_asignacion_proyectos.* TO ma
 
 -- Creacion del procedimiento para insertar datos a la tabla desarrollador
 DELIMITER //
-CREATE PROCEDURE sp_insertar_desarrollador(
+CREATE PROCEDURE sp_ins_desarrollador(
     -- Datos de entrada
     IN dni VARCHAR(11),
     IN nombre VARCHAR(50),
@@ -99,7 +99,7 @@ DELIMITER ;
 
 -- Creacion del procedimiento para modificar los datos de la tabla desarrollador
 DELIMITER //
-CREATE PROCEDURE sp_update_desarrollador(
+CREATE PROCEDURE sp_upd_desarrollador(
     -- El id para identificarlo y los demas datos para modificarlos
     IN v_id INT,
     IN v_dni VARCHAR(11),
@@ -117,7 +117,7 @@ DELIMITER ;
 
 -- Creacion del procedimiento para eliminar datos de la tabla desarrollador
 DELIMITER //
-CREATE PROCEDURE sp_delete_desarrollador(
+CREATE PROCEDURE sp_del_desarrollador(
     -- Id para poder eliminar un desarrollador
     IN v_id INT
 )
